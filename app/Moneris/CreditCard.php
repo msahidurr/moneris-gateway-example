@@ -15,7 +15,6 @@ class CreditCard
     protected $crypt;
 
     /**
-     * @var \CraigPaul\Moneris\Customer|null
      */
     protected $customer = null;
 
@@ -47,8 +46,6 @@ class CreditCard
 
     /**
      * Attach a provided customer to the CreditCard instance.
-     *
-     * @param \CraigPaul\Moneris\Customer $customer
      *
      * @return $this
      */

@@ -57,7 +57,6 @@ class Customer
      *
      * @param array $params
      *
-     * @return \CraigPaul\Moneris\Customer
      */
     public static function create(array $params = [])
     {

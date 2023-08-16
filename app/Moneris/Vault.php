@@ -4,14 +4,7 @@ namespace App\Moneris;
 
 use App\Moneris\Gettable;
 use App\Moneris\CreditCard;
-use App\Moneris\Response;
-/**
- * CraigPaul\Moneris\Vault
- *
- * @property-read string $environment
- * @property-read string $id
- * @property-read string $token
- */
+
 class Vault extends Gateway
 {
     use Gettable;
@@ -153,8 +146,6 @@ class Vault extends Gateway
      *
      * @param $transaction
      * @param string|null $order
-     *
-     * @return \CraigPaul\Moneris\Response
      */
     public function tokenize($transaction, string $order = null)
     {
@@ -178,9 +169,6 @@ class Vault extends Gateway
      * Update an existing credit card in the Vault.
      *
      * @param string $key
-     * @param \CraigPaul\Moneris\CreditCard $card
-     *
-     * @return \CraigPaul\Moneris\Response
      */
     public function update(string $key, CreditCard $card)
     {
