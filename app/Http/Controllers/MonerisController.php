@@ -29,12 +29,12 @@ class MonerisController extends Controller
     public function purchase(Request $request)
     {
         $params = [
-            'order_id' => uniqid('1234-56789', true),
-            'amount' => '1.00',
-            'credit_card' => '4242424242424242',
-            'expiry_month' => '12',
-            'expiry_year' => '2026',
-            'expdate' => '2026',
+            'order_id' => $request->order_id ?? uniqid('1234-56789', true),
+            'amount' => $request->amount ?? '1.00',
+            'credit_card' => $request->credit_card ?? '4242424242424242',
+            'expiry_month' => $request->expiry_month ?? '12',
+            'expiry_year' => $request->expiry_year ?? '2026',
+            'expdate' => $request->expdate ?? '2026',
         ];
         
         $response = $this->gateway->purchase($params);

@@ -112,7 +112,7 @@ class Processor
     {
         $config = self::config($transaction->gateway->environment);
 
-        $url = $config['protocol'].'://'.$config['host'].':'.$config['port'].$config['url'];
+        $url = $config['protocol'] . '://' . $config['host'] . ':' . $config['port'] . $config['url'];
 
         $xml = str_replace(' </', '</', $transaction->toXml());
 
