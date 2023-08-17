@@ -211,7 +211,7 @@ class Transaction
                 case 'card_verification':
                 case 'preauth':
                 case 'purchase':
-                    $errors[] = Validator::set($params, 'order_id') ? null : 'Order Id not provided.';
+                    $errors[] = Validator::set($params, 'order_id') ? null : 'Receipt Id not provided.';
                     $errors[] = Validator::set($params, 'pan') ? null : 'Credit card number not provided.';
                     $errors[] = Validator::set($params, 'amount') ? null : 'Amount not provided.';
                     $errors[] = Validator::set($params, 'expdate') ? null : 'Expiry date not provided.';
@@ -229,19 +229,19 @@ class Transaction
                     break;
                 case 'res_tokenize_cc':
                 case 'purchasecorrection':
-                    $errors[] = Validator::set($params, 'order_id') ? null : 'Order id not provided.';
+                    $errors[] = Validator::set($params, 'order_id') ? null : 'Receipt id not provided.';
                     $errors[] = Validator::set($params, 'txn_number') ? null : 'Transaction number not provided.';
 
                     break;
                 case 'completion':
                     $errors[] = Validator::set($params, 'comp_amount') ? null : 'Amount not provided.';
-                    $errors[] = Validator::set($params, 'order_id') ? null : 'Order id not provided.';
+                    $errors[] = Validator::set($params, 'order_id') ? null : 'Receipt id not provided.';
                     $errors[] = Validator::set($params, 'txn_number') ? null : 'Transaction number not provided.';
 
                     break;
                 case 'refund':
                     $errors[] = Validator::set($params, 'amount') ? null : 'Amount not provided.';
-                    $errors[] = Validator::set($params, 'order_id') ? null : 'Order id not provided.';
+                    $errors[] = Validator::set($params, 'order_id') ? null : 'Receipt id not provided.';
                     $errors[] = Validator::set($params, 'txn_number') ? null : 'Transaction number not provided.';
 
                     break;
@@ -265,7 +265,7 @@ class Transaction
                 case 'res_preauth_cc':
                 case 'res_purchase_cc':
                     $errors[] = Validator::set($params, 'data_key') ? null : 'Data key not provided.';
-                    $errors[] = Validator::set($params, 'order_id') ? null : 'Order id not provided.';
+                    $errors[] = Validator::set($params, 'order_id') ? null : 'Receipt id not provided.';
                     $errors[] = Validator::set($params, 'amount') ? null : 'Amount not provided.';
 
                     if ($this->gateway->avs) {

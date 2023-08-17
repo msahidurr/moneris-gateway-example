@@ -36,6 +36,9 @@ class Customer
      * @var string
      */
     protected $note;
+    protected $avs_street_name;
+    protected $avs_street_number;
+    protected $avs_zipcode;
 
     /**
      * Create a new Customer instance.
@@ -50,6 +53,9 @@ class Customer
         $this->email = $params['email'] ?? null;
         $this->phone = $params['phone'] ?? null;
         $this->note = $params['note'] ?? null;
+        $this->avs_street_name = $params['avs_street_name'] ?? null;
+        $this->avs_street_number = $params['avs_street_number'] ?? null;
+        $this->avs_zipcode = $params['avs_zipcode'] ?? null;
     }
 
     /**

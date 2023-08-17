@@ -12,9 +12,13 @@ class RefundController extends MonerisController
     }
     
     public function refund(Request $request)
-    {        
-        $response = $this->gateway->refund($request->transactionId, $request->order_id, $request->amount);
+    {
+        $response = $this->gateway->refund($request->trans_id, $request->receipt_id, $request->amount);
 
-        return response()->json($response ?? []);
+        if(count($response->errors) > 0) {
+            return response()->json($response->errors);
+        }
+        
+        return response()->json($response->receipt());
     }
 }

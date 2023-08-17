@@ -4,17 +4,17 @@ namespace App\Http\Controllers\Monires;
 
 use Illuminate\Http\Request;
 
-class PreAuthorization extends MonerisController
+class PurchaseController extends MonerisController
 {
     public function __construct()
     {
         parent::__construct();
     }
     
-    public function authorization(Request $request)
+    public function purchase(Request $request)
     {
         $params = [
-            'order_id' => uniqid('1234-56789', true),
+            'order_id' => $request->order_id ?? uniqid('1234-56789', true),
             'amount' => $request->amount,
             'credit_card' => $request->credit_card,
             'expiry_month' => $request->expiry_month,
@@ -22,7 +22,7 @@ class PreAuthorization extends MonerisController
             'expdate' => $request->expiry_year,
         ];
         
-        $response = $this->gateway->preauth($params);
+        $response = $this->gateway->purchase($params);
 
         if(count($response->errors) > 0) {
             return response()->json($response->errors);

@@ -17,20 +17,40 @@ class CustomerController extends MonerisController
     {
         $params = [
             'id' => uniqid('customer-', true),
-            'email' => $request->email ?? 'example@email.com',
-            'phone' => $request->phone ??'555-555-5555',
-            'note' => $request->note ??'Customer note',
+            'cust_id' => $request->cust_id ?? uniqid('customer-', true),
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'note' => $request->note,
+            'avs_street_number' => $request->avs_street_number,
+            'avs_street_name' => $request->avs_street_name,
+            'avs_zipcode' => $request->avs_zipcode,
         ];
         
+        $vault = $this->gateway->cards();
+        
         $customer = Customer::create($params);
-        $card = CreditCard::create('4242424242424242', '2012');
+        $card = CreditCard::create($request->credit_card, $request->expiry_year);
         $card = $card->attach($customer);
         
-        // $response = $vault->add($card);
-        // $key = $response->receipt()->read('key');
+        $response = $vault->add($card);
+
+        if(count($response->errors) > 0) {
+            return response()->json($response->errors);
+        }
+
+        return response()->json($response->transaction->response->receipt);
+    }
+
+    public function show(Request $request, $key = null)
+    {        
+        $vault = $this->gateway->cards();
         
-        // $card->customer->email = 'example2@email.com';
-        
-        // $response = $vault->update($key, $card);
+        $response = $vault->peek($key ?? $request->key);
+
+        if(count($response->errors) > 0) {
+            return response()->json($response->errors);
+        }
+
+        return response()->json($response->receipt());
     }
 }
