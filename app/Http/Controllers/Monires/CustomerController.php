@@ -31,7 +31,6 @@ class CustomerController extends MonerisController
         $customer = Customer::create($params);
         $card = CreditCard::create($request->credit_card, $request->expiry_year);
         $card = $card->attach($customer);
-        $card->customer->email = 'shohid@email.com';
         $response = $vault->add($card);
 
         if(count($response->errors) > 0) {
