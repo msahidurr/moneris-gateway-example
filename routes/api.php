@@ -29,6 +29,7 @@ Route::post('/add-card', [MonerisController::class, 'addCard']);
 Route::post('/purchase', [PurchaseController::class, 'purchase']);
 Route::get('/customer/profile/{key?}', [CustomerController::class, 'show']);
 Route::post('/customer/store', [CustomerController::class, 'store']);
+Route::post('/customer/update/{key?}', [CustomerController::class, 'update']);
 Route::post('/pre-authorization', [PreAuthorization::class, 'authorization']);
 Route::post('/refund', [RefundController::class, 'refund']);
 

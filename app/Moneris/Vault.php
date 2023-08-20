@@ -34,6 +34,13 @@ class Vault extends Gateway
             'crypt_type' => $card->crypt,
             'pan' => $card->number,
             'expdate' => $card->expiry,
+            'email' => $card->customer->email ?? '',
+            'cust_id' => $card->customer->cust_id ?? '',
+            'phone' => $card->customer->phone ?? '',
+            'note' => $card->customer->note ?? '',
+            'avs_street_number' => $card->customer->avs_street_number ?? '',
+            'avs_street_name' => $card->customer->avs_street_name ?? '',
+            'avs_zipcode' => $card->customer->avs_zipcode ?? '',
         ];
 
         $transaction = $this->transaction($params);
@@ -178,6 +185,13 @@ class Vault extends Gateway
             'crypt_type' => $card->crypt,
             'pan' => $card->number,
             'expdate' => $card->expiry,
+            'email' => $card->customer->email ?? '',
+            'cust_id' => $card->customer->cust_id ?? '',
+            'phone' => $card->customer->phone ?? '',
+            'note' => $card->customer->note ?? '',
+            'avs_street_number' => $card->customer->avs_street_number ?? '',
+            'avs_street_name' => $card->customer->avs_street_name ?? '',
+            'avs_zipcode' => $card->customer->avs_zipcode ?? '',
         ];
 
         $transaction = $this->transaction($params);

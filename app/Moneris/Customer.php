@@ -39,6 +39,7 @@ class Customer
     protected $avs_street_name;
     protected $avs_street_number;
     protected $avs_zipcode;
+    protected $cust_id;
 
     /**
      * Create a new Customer instance.
@@ -56,6 +57,7 @@ class Customer
         $this->avs_street_name = $params['avs_street_name'] ?? null;
         $this->avs_street_number = $params['avs_street_number'] ?? null;
         $this->avs_zipcode = $params['avs_zipcode'] ?? null;
+        $this->cust_id = $params['cust_id'] ?? null;
     }
 
     /**
