@@ -30,4 +30,25 @@ class PurchaseController extends MonerisController
 
         return response()->json($response->receipt());
     }
+    
+    public function webPurchase(Request $request)
+    {
+        $params = [
+            'order_id' => $request->order_id ?? uniqid('1234-56789', true),
+            'amount' => $request->amount,
+            'credit_card' => $request->credit_card,
+            'expiry_month' => $request->expiry_month,
+            'expiry_year' => $request->expiry_year,
+            'expdate' => $request->expiry_year,
+        ];
+        
+        $response = $this->gateway->purchase($params);
+
+        if(count($response->errors) > 0) {
+            return redirect()->back()->withErrors($response->errors);
+            return response()->json($response->errors);
+        }
+
+        return response()->json($response->receipt());
+    }
 }

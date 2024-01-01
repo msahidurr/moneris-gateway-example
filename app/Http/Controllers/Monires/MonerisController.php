@@ -10,9 +10,11 @@ class MonerisController extends Controller
 {
     protected $gateway;
 
-    protected $id = "monca08002";
+    // protected $id = "monca08002";
+    protected $id = "store1";
 
-    protected $token = "Otx1Ob8ScDr3oXNe4XRO";
+    // protected $token = "Otx1Ob8ScDr3oXNe4XRO";
+    protected $token = "yesguy1";
 
     public function __construct()
     {

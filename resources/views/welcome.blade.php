@@ -29,17 +29,22 @@
                     @csrf
                     <div class="form-group">
                         <label for="">Card</label>
-                        <input type="text" class="form-control" name="credit_card">
+                        <input type="text" class="form-control" name="credit_card" value="4242424242424242">
                     </div>
                     
                     <div class="form-group">
                         <label for="">Month</label>
-                        <input type="text" class="form-control" name="expiry_month" maxlength="2">
+                        <input type="text" class="form-control" name="expiry_month" maxlength="2" value="12">
                     </div>
                     
                     <div class="form-group">
                         <label for="">Year</label>
-                        <input type="text" class="form-control" name="expiry_year" maxlength="4">
+                        <input type="text" class="form-control" name="expiry_year" maxlength="4" value="2026">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="">amount</label>
+                        <input type="number" class="form-control" name="amount" value="1.00">
                     </div>
 
                     <div class="form-group text-center" style="padding-top: 10px;">
